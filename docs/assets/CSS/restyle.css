@@ -1,0 +1,199 @@
+.top-images{
+	height: 40%;
+	width:40%;
+	margin: auto;
+	padding-top:50%;
+}
+.top-contents{
+	color:/*#f00*/;
+	text-align:center;
+	padding-top: 20%;
+	padding-bottom: 60%;
+}
+.container-fluid{
+	padding-bottom: 15%;
+}
+.activitie-content img{
+	height:90%;
+	width:90%;
+	margin: 5%; 
+}
+/*.need-content img{
+	float:left;
+	margin-bottom: 15px;
+	}*/
+	.flexbox{
+		display:flex;
+		flex-direction: column;
+		height: 100px;
+		width:100px;
+	}
+	.flexbox img{
+		margin-bottom: 60px;
+	}
+	.need-content ul li{
+		margin-left:100px;
+		list-style:none;
+		padding-bottom: 8px;
+	}
+	.flexbox-list{
+		display:flex;
+		flex-direction: column;
+		margin-top: -100px;
+		/*color:red;*/
+		list-style:none;
+	}
+	.p-6{
+		margin-top:50px;
+		background-color:#f8f8ff;
+		border:2px solid #d3d3d3;
+		border-radius:5px;
+	}
+	footer{
+		background-color:#000000;
+		color:#ffffff;
+		height: 70px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 999;
+	}
+	footer button{
+		float:right;
+		padding:3%;
+		margin:2%;
+		border:2px solid #d3d3d3;
+		border-radius:5px;
+	}
+	footer img{
+		height:60px;
+		width:60px;
+		margin-left: 50px;
+	}
+
+
+	/*========= ローディング画面のためのCSS ===============*/
+	#splash {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: #000000;
+		z-index: 9999999;
+		text-align:center;
+		color:#fff;
+	}
+
+	#splash-logo {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 100px;
+		font-family: 'Rampart One', cursive;
+	}
+	/*========= 画面遷移のためのCSS ===============*/
+
+	body{
+		background:#000000;/*遷移アニメーションと同じ色を指定*/
+		font-family: 'Kosugi Maru', sans-serif;
+	}
+	.font-1{
+		font-family: 'Rampart One', cursive;
+	}
+
+	body.appear{
+		background:#fff;/*画面を開いた後の背景色を指定*/
+	}
+
+	/*画面遷移アニメーション*/
+	.splashbg1,
+	.splashbg2{
+		display: none;
+	}
+
+	/*bodyにappearクラスがついたら出現*/
+	body.appear .splashbg1,
+	body.appear .splashbg2{
+		display:block;
+	}
+
+	/*上に消えるエリア*/
+	body.appear .splashbg1{
+		animation-name:PageAnime;
+		animation-duration:1.4s;
+		animation-timing-function:ease-in-out;
+		animation-fill-mode:forwards;
+		content: "";
+		position:fixed;
+		z-index: 999;
+		width: 100%;
+		height: 100vh;
+		bottom:50%;
+		left:0;
+		transform: scaleY(1);
+		background-color: #000000;/*伸びる背景色の設定*/
+	}
+
+	@keyframes PageAnime{
+		0% {
+			transform-origin:top;
+			transform:scaleY(1);
+		}
+
+		100% {
+			transform-origin:top;
+			transform:scaleY(0);
+		}
+	}
+
+	/*下に消えるエリア*/
+	body.appear .splashbg2{
+		animation-name:PageAnime2;
+		animation-duration:1.4s;
+		animation-timing-function:ease-in-out;
+		animation-fill-mode:forwards;
+		content: "";
+		position:fixed;
+		z-index: 999;
+		width: 100%;
+		height: 100vh;
+		top: 50%;
+		left:0;
+		transform: scaleY(1);
+		background-color: #000000;/*伸びる背景色の設定*/
+	}
+
+	@keyframes PageAnime2{
+		0% {
+			transform-origin:bottom;
+			transform:scaleY(1);
+		}
+		100% {
+			transform-origin:bottom;
+			transform:scaleY(0);
+		}
+	}
+
+	/*画面遷移の後現れるコンテンツ設定*/
+	#container{
+		opacity: 0;/*はじめは透過0に*/
+	}
+
+	/*bodyにappearクラスがついたら出現*/
+	body.appear #container{
+		animation-name:PageAnimeAppear;
+		animation-duration:1s;
+		animation-delay:0.2s;
+		animation-fill-mode:forwards;
+		opacity: 0;
+	}
+
+	@keyframes PageAnimeAppear{
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
